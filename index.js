@@ -1,4 +1,4 @@
-const { existsSync } = require("node:fs");
+const { existsSync, readFileSync } = require("node:fs");
 const path = require("node:path");
 
 module.exports = function rollupRewrite(options) {
