@@ -2,7 +2,7 @@ const { existsSync, readFileSync } = require("node:fs");
 const path = require("node:path");
 
 module.exports = function rollupRewrite(options) {
-    const { include, exclude, sign } = options;
+    const { include, exclude, binaryInclude, binaryExclude, sign } = options;
     const dir = process.cwd()
     return {
         name: 'vite-plugin-rewrite',
@@ -22,5 +22,18 @@ module.exports = function rollupRewrite(options) {
                 }
             }
         },
+        resolveId(id) {
+            if (binaryInclude && !include.test(id)) {
+                return null;
+            }
+            if (binaryExclude && exclude.test(id)) {
+                return null;
+            }
+            const modifiedPath = id.replace(/(\..+?$)/g, `_${sign}$1`)
+            if (existsSync(modifiedPath)) {
+                return modifiedPath
+            }
+            return null
+        }
     };
 }

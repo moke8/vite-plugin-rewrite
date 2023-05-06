@@ -14,6 +14,8 @@ Refer to vite configuration
         rewrite({
             include: /\.tsx?$/, // Files that need to be replaced RegExp
             exclude: /node_modules/, // Excluded Files RegExp
+            binaryInclude: /\.jpg?$/, // Binary Files that need to be replaced RegExp
+            binaryExclude: /node_modules/, // Excluded Binary Files RegExp
             sign: '@rewrite' // Replaced file path
         }),
     ]
@@ -38,6 +40,8 @@ npm i rollup-plugin-rewrite
         rewrite({
             include: /\.tsx?$/, // 需要替换的文件正则
             exclude: /node_modules/, // 排除的文件正则
+            binaryInclude: /\.jpg?$/, // 需要替换的二进制文件正则
+            binaryExclude: /node_modules/, // 排除的二进制文件正则
             sign: '@rewrite' // 替换的文件路径
         }),
     ]

@@ -1,6 +1,8 @@
 declare const _default: (options: {
     include: RegExp
     exclude: RegExp
+    binaryInclude: RegExp
+    binaryExclude: RegExp
     sign?: string
 }) => {
     name: string
@@ -8,4 +10,5 @@ declare const _default: (options: {
     resolveId: (id: string) => string
 }
 
-export { _default as default };
+export { _default as default }
+
