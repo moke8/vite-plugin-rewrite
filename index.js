@@ -25,10 +25,10 @@ module.exports = function rollupRewrite(options) {
         },
         resolveId(id) {
             if (!binaryInclude && !binaryExclude) return null
-            if (binaryInclude && !include.test(id)) {
+            if (binaryInclude && !binaryInclude.test(id)) {
                 return null;
             }
-            if (binaryExclude && exclude.test(id)) {
+            if (binaryExclude && binaryExclude.test(id)) {
                 return null;
             }
             const modifiedPath = id.replace(/(\..+?$)/g, `_${sign}$1`)
