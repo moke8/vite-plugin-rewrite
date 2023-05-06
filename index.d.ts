@@ -1,8 +1,8 @@
 declare const _default: (options: {
-    include: RegExp
-    exclude: RegExp
-    binaryInclude: RegExp
-    binaryExclude: RegExp
+    include?: RegExp
+    exclude?: RegExp
+    binaryInclude?: RegExp
+    binaryExclude?: RegExp
     sign?: string
 }) => {
     name: string

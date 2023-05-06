@@ -8,6 +8,7 @@ module.exports = function rollupRewrite(options) {
         name: 'vite-plugin-rewrite',
         enforce: 'pre', // 标注必须在vite核心插件之前介入
         load(id) {
+            if (!include && !exclude) return null
             if (include && !include.test(id)) {
                 return null;
             }
@@ -23,6 +24,7 @@ module.exports = function rollupRewrite(options) {
             }
         },
         resolveId(id) {
+            if (!binaryInclude && !binaryExclude) return null
             if (binaryInclude && !include.test(id)) {
                 return null;
             }
