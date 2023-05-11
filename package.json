@@ -1,6 +1,6 @@
 {
   "name": "vite-plugin-rewrite",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "基于rollup，对指定文件，按照规则覆盖",
   "main": "index.js",
   "scripts": {

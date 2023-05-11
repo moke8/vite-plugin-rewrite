@@ -4,6 +4,7 @@ declare const _default: (options: {
     binaryInclude?: RegExp
     binaryExclude?: RegExp
     sign?: string
+    whiteMark?: string
 }) => {
     name: string
     enforce: string
