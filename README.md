@@ -75,6 +75,12 @@ plugins: [
         include: /\.tsx|\.js|\.ts|\.vue|\.tsx\?.+?$/
     }),
 ],
+resolve: {
+    alias: {
+        "@": fileURLToPath(new URL("./src", import.meta.url)),
+        "@no-rewrite": fileURLToPath(new URL("./src", import.meta.url)),
+    },
+},
 ```
 ## 中文
 ```vite-plugin-rewrite``` 插件支持 ```vite3```，提供了基于```rollup```的文件编译前替换能力
@@ -88,17 +94,23 @@ npm i rollup-plugin-rewrite
 ```
 // vite.config.ts
 ...
-    plugins: [
-        rewrite({
-            include: /\.tsx?$/, // 需要替换的文件正则
-            exclude: /node_modules/, // 排除的文件正则
-            binaryInclude: /\.jpg?$/, // 需要替换的二进制文件正则
-            binaryExclude: /node_modules/, // 排除的二进制文件正则
-            sign: '_rewrite', // 替换的文件路径
-            whiteMark: 'no-rewrite' // 白名单标识, 含有该字符串的引用将不会被替换, (避免继承导致的循环引入)
+plugins: [
+    rewrite({
+        include: /\.tsx?$/, // 需要替换的文件正则
+        exclude: /node_modules/, // 排除的文件正则
+        binaryInclude: /\.jpg?$/, // 需要替换的二进制文件正则
+        binaryExclude: /node_modules/, // 排除的二进制文件正则
+        sign: '_rewrite', // 替换的文件路径
+        whiteMark: 'no-rewrite' // 白名单标识, 含有该字符串的引用将不会被替换, (避免继承导致的循环引入)
 
-        }),
-    ]
+    }),
+],
+resolve: {
+    alias: {
+        "@": fileURLToPath(new URL("./src", import.meta.url)),
+        "@no-rewrite": fileURLToPath(new URL("./src", import.meta.url)),
+    },
+},
 ...
 ```
 通过以上配置实现了，所有tsx文件非node_modules文件夹内的：
