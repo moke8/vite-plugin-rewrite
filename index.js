@@ -8,7 +8,7 @@ module.exports = function rollupRewrite(options) {
     return {
         name: 'vite-plugin-rewrite',
         enforce: 'pre', // 标注必须在vite核心插件之前介入
-        load(id) {
+        load(id, code) {
             // 被引用 Referenced File Handle
             if (whiteMark && whiteMarkReg.test(id)) {
                 if (virtuals[id]) {
@@ -27,7 +27,7 @@ module.exports = function rollupRewrite(options) {
             if (existsSync(modifiedPath)) {
                 const result = readFileSync(modifiedPath).toString()
                 if (whiteMark) {
-                    virtuals[id] = readFileSync(id).toString()
+                    virtuals[id] = code
                 }
                 return {
                     code: result
