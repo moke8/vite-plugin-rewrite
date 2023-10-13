@@ -4,7 +4,7 @@
 ### usage method
 #### install
 ```
-npm i rollup-plugin-rewrite
+npm i vite-plugin-rewrite
 ```
 #### Refer to vite configuration
 ```
